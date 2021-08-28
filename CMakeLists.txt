@@ -8,8 +8,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 find_package(FUSE REQUIRED)
+add_subdirectory(td)
 
 include_directories(${FUSE_INCLUDE_DIR})
 add_executable(tgfs main.cpp)
-target_link_libraries(tgfs ${FUSE_LIBRARIES})
-
+target_link_libraries(tgfs PRIVATE ${FUSE_LIBRARIES} Td::TdStatic)
